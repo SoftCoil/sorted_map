@@ -16,6 +16,8 @@ class SortedMap<K, V> implements Map<K, V> {
   final int? capacity;
   final EjectFrom ejectFrom;
 
+  /// The comparator is required to specify the sort order. Capacity and
+  /// ejectFrom are optional and capacity will be unlimited unless provided.
   SortedMap({required this.comparator, this.capacity, this.ejectFrom = EjectFrom.END}) {
     _sortedEntries = SplayTreeSet<MapEntry<K, V>>(comparator);
   }

@@ -1,3 +1,7 @@
+## 1.0.2
+
+- Added API docs
+
 ## 1.0.1
 
 - Renamed example for pub.dev
