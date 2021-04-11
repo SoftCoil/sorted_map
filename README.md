@@ -14,7 +14,7 @@ when new entries are added.
 A simple usage example:
 
 ```dart
-import 'package:sorted_map/sorted_map.dart';
+import 'package:comparator_sorted_map/comparator_sorted_map.dart';
 
 main() {
   //Sort by value

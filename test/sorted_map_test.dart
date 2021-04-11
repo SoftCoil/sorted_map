@@ -1,6 +1,6 @@
 
-import 'package:sorted_map/sorted_map.dart';
-import 'package:sorted_map/src/utils.dart';
+import 'package:comparator_sorted_map/comparator_sorted_map.dart';
+import 'package:comparator_sorted_map/src/utils.dart';
 import 'package:test/test.dart';
 
 void main() {

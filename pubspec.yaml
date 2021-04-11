@@ -1,5 +1,5 @@
-name: sorted_map
-description: A starting point for Dart libraries or applications.
+name: comparator_sorted_map
+description: A SortedMap that relies on a Comparator to sort on key, value, or a combination of both.
 version: 1.0.0
 homepage: https://github.com/SoftCoil/sorted_map
 
