@@ -29,11 +29,10 @@ class SortedMap<K, V> implements Map<K, V> {
   void _reduceToCapacity() {
     if(capacity != null) {
       while(length > capacity!) {
-        if(ejectFrom == EjectFrom.END) {
-          remove(_sortedEntries.last.key);
-        } else {
-          remove(_sortedEntries.first.key);
-        }
+        K toRemove = ejectFrom == EjectFrom.END ? _sortedEntries.last.key : _sortedEntries.first.key;
+        _log.fine('Map size $length is greater than capacity $capacity. '
+            'Removing element with key = $toRemove');
+        remove(toRemove);
       }
     }
   }
@@ -150,13 +149,13 @@ class SortedMap<K, V> implements Map<K, V> {
       if (test(key, this[key] as V)) keysToRemove.add(key);
     }
     for (var key in keysToRemove) {
-      this.remove(key);
+      remove(key);
     }
   }
 
   @override
   V update(K key, V Function(V value) update, {V Function()? ifAbsent}) {
-    if (this.containsKey(key)) {
+    if (containsKey(key)) {
       return this[key] = update(this[key] as V);
     }
     if (ifAbsent != null) {
@@ -164,12 +163,12 @@ class SortedMap<K, V> implements Map<K, V> {
       _reduceToCapacity();
       return value;
     }
-    throw ArgumentError.value(key, "key", "Key not in map.");
+    throw ArgumentError.value(key, 'key', 'Key not in map.');
   }
 
   @override
   void updateAll(V Function(K key, V value) update) {
-    for (var key in this.keys) {
+    for (var key in keys) {
       this[key] = update(key, this[key] as V);
     }
   }
