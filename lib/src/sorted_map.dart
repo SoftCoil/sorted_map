@@ -65,6 +65,8 @@ class SortedMap<K, V> implements Map<K, V> {
   void addEntries(Iterable<MapEntry<K, V>> newEntries) {
     newEntries.forEach((entry) {
       _map[entry.key] = entry.value;
+      _sortedEntries.remove(entry); //Necessary because add() below will not update
+                                    //the entry if an equal one is already in the Set.
       _sortedEntries.add(entry);
     });
     _reduceToCapacity();

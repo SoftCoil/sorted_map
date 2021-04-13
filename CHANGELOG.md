@@ -1,3 +1,7 @@
+## 1.0.4
+
+- Fixed addEntries() not updating existing values
+
 ## 1.0.3
 
 - Fixed pub.dev static analysis issues

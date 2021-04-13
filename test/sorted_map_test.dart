@@ -92,7 +92,28 @@ void main() {
     expect(values, ['Y', 'Z']);
   });
 
+  test('test updating with addEntries', () {
 
+    SortedMap map = SortedMap(comparator: (a, b) => a.key.compareTo(b.key));
+    map[2] = 'X';
+    map[0] = 'Y';
+    map[1] = 'Z';
+
+    Iterable keys = map.keys;
+    expect(keys, [0, 1, 2]);
+
+    Iterable values = map.values;
+    expect(values, ['Y', 'Z', 'X']);
+
+    List<MapEntry> entries = [MapEntry(0, 'A')];
+    map.addEntries(entries);
+
+    keys = map.keys;
+    expect(keys, [0, 1, 2]);
+
+    values = map.values;
+    expect(values, ['A', 'Z', 'X']);
+  });
 }
 
 
