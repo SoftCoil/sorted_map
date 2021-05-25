@@ -1,3 +1,7 @@
+## 1.0.5
+
+- Improved documentation and code format compliance.
+
 ## 1.0.4
 
 - Fixed addEntries() not updating existing values
