@@ -1,6 +1,6 @@
 name: comparator_sorted_map
 description: A SortedMap that relies on a Comparator to sort on key, value, or a combination of both.
-version: 1.0.4
+version: 1.0.5
 homepage: https://github.com/SoftCoil/sorted_map
 
 environment:

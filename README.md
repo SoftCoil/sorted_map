@@ -1,12 +1,12 @@
 
 A SortedMap in Dart.
 
-Requires a Comparator on construction that allows sorting by key, value, or a combination
-of both.
+Provide a Comparator on construction to specify any custom sorting by key, value, or 
+a combination of both.
 
 Also includes the ability to limit the map's capacity. If the map's capacity is limited
-it will eject over capacity entries from either the beginning or end of the sort 
-when new entries are added.
+you can specify whether to eject over capacity entries from either the beginning or end
+of the sort when a new entry is added.
 
 
 ## Usage
@@ -16,7 +16,8 @@ A simple usage example:
 ```dart
 import 'package:comparator_sorted_map/comparator_sorted_map.dart';
 
-main() {
+void main() {
+
   //Sort by value
   SortedMap sortByValue = SortedMap(comparator: (a, b) => a.value.compareTo(b.value));
   sortByValue[0] = 'Z';
@@ -30,6 +31,39 @@ main() {
   Iterable values = sortByValue.values;
   print(values);
   //Should print ['X', 'Y', 'Z']
+
+
+  //Sort by key
+  SortedMap sortByKey = SortedMap(comparator: (a, b) => a.key.compareTo(b.key));
+  sortByKey[2] = 'X';
+  sortByKey[0] = 'Y';
+  sortByKey[1] = 'Z';
+
+  keys = sortByKey.keys;
+  print(keys);
+  //Should print [0, 1, 2]
+
+  values = sortByKey.values;
+  print(values);
+  //Should print ['Y', 'Z', 'X']
+
+  //Limit Capacity
+  SortedMap limitedCapacityMap = SortedMap(
+      comparator: (a, b) => a.value.compareTo(b.value),
+      capacity: 2,
+      ejectFrom: EjectFrom.END
+  );
+  limitedCapacityMap[0] = 'Z';
+  limitedCapacityMap[1] = 'Y';
+  limitedCapacityMap[2] = 'X';
+
+  keys = limitedCapacityMap.keys;
+  print(keys);
+  //Should print [2, 1]
+
+  values = limitedCapacityMap.values;
+  print(values);
+  //Should print ['X', 'Y']
 }
 ```
 
